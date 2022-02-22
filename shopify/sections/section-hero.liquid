@@ -15,13 +15,13 @@
           600px
         "
         srcset="
-          {{ image | img_url: '600x' }} 600w,
-          {{ image | img_url: '720x' }} 720w,
-          {{ image | img_url: '1000x' }} 1000w,
-          {{ image | img_url: '1250x' }} 1250w,
-          {{ image | img_url: '1500x' }} 1500w
+          {{ image | image_url: width: 600 }} 600w,
+          {{ image | image_url: width: 720 }} 720w,
+          {{ image | image_url: width: 1000 }} 1000w,
+          {{ image | image_url: width: 1250 }} 1250w,
+          {{ image | image_url: width: 1500 }} 1500w
         "
-        src="{{ image | img_url: '1500x' }}"
+        src="{{ image | image_url: width: 1500 }}"
         alt="{{ image.alt }}"
         loading="lazy"
         class="object-cover object-center w-full h-full"

@@ -10,12 +10,12 @@
         500px
       "
       srcset="
-        {{ image | img_url: '300x' }} 300w,
-        {{ image | img_url: '350x' }} 350w,
-        {{ image | img_url: '400x' }} 400w,
-        {{ image | img_url: '500x' }} 500w
+        {{ image | image_url: width: 300 }} 300w,
+        {{ image | image_url: width: 350 }} 350w,
+        {{ image | image_url: width: 400 }} 400w,
+        {{ image | image_url: width: 500 }} 500w
       "
-      src="{{ image | img_url: '500x' }}"
+      src="{{ image | image_url: width: 500 }}"
       alt="{{ image.alt }}"
       loading="lazy"
       class="w-full h-full object-cover object-center"

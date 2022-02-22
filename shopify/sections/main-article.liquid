@@ -16,11 +16,11 @@
           450px
         "
         srcset="
-          {{ article | img_url: '450x' }} 450w,
-          {{ article | img_url: '600x' }} 600w,
-          {{ article | img_url: '750x' }} 750w,
+          {{ article | image_url: width: 450 }} 450w,
+          {{ article | image_url: width: 600 }} 600w,
+          {{ article | image_url: width: 750 }} 750w,
         "
-        src="{{ article | img_url: '750x' }}"
+        src="{{ article | image_url: width: 750 }}"
         alt="{{ article.image.alt | escape }}"
         loading="lazy"
         class="w-full"

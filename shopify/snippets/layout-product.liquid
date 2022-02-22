@@ -6,10 +6,10 @@
         630px
       "
       srcset="
-        {{ product.featured_image.src | img_url: '450x' }} 450w,
-        {{ product.featured_image.src | img_url: '630x' }} 630w
+        {{ product.featured_image.src | image_url: width: 450 }} 450w,
+        {{ product.featured_image.src | image_url: width: 630 }} 630w
       "
-      src="{{ product.featured_image.src | img_url: '630x' }}"
+      src="{{ product.featured_image.src | image_url: width: 630 }}"
       alt="{{ product.featured_image.alt | escape }}"
       loading="lazy"
       class="object-cover object-center w-full h-80 rounded-2xl sm:h-64 xl:h-80 2xl:max-h-96"

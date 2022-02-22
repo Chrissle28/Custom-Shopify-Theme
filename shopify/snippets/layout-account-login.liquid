@@ -6,7 +6,7 @@
   {% if form.errors %}
     {% capture error_text %}
       {{ form.errors | default_errors }}
-    {% endcapture%}
+    {% endcapture %}
 
     {% render 'layout-message',
       type: 'error'

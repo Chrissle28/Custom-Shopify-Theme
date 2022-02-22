@@ -7,7 +7,7 @@
       <div>
         <img
           v-if="initialRender"
-          src="{{ featured_image | img_url: '750x' }}"
+          src="{{ featured_image | image_url: width: 750 }}"
           alt="{{ featured_image.alt | escape }}"
           loading="lazy"
           class="object-cover object-center w-full h-auto rounded-2xl"
@@ -27,11 +27,11 @@
       {% if product.has_only_default_variant %}
         <div class="flex gap-4 mt-4">
           {% for image in product.images %}
-            <link rel="preload" as="image" href="{{ image.src | img_url: '750x' }}">
+            <link rel="preload" as="image" href="{{ image.src | image_url: width: 750 }}">
 
             <button
               class="w-20 h-20 md:w-24 md:h-24"
-              data-url="{{ image.src | img_url: '750x' }}"
+              data-url="{{ image.src | image_url: width: 750 }}"
               data-alt="{{ image.alt | escape }}"
               @click="switchImage"
             >
@@ -41,10 +41,10 @@
                   80px
                 "
                 srcset="
-                  {{ image.src | img_url: '80x' }} 80w,
-                  {{ image.src | img_url: '96x' }} 96w
+                  {{ image.src | image_url: width: 80 }} 80w,
+                  {{ image.src | image_url: width: 96 }} 96w
                 "
-                src="{{ image.src | img_url: '96x' }}"
+                src="{{ image.src | image_url: width: 96 }}"
                 alt="{{ image.alt | escape }}"
                 loading="lazy"
                 class="object-cover object-center w-full h-full pointer-events-none"

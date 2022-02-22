@@ -1,9 +1,9 @@
-<div class="bg-white border-b border-gray-200">
+<div class="bg-blue-200 border-b border-gray-200">
   <div class="container">
-    <div class="h-20 md:h-32 flex justify-center md:justify-between items-center">
+    <div class="flex items-center justify-center h-20 md:h-32 md:justify-between">
       <a
         href="{{ routes.root_url }}"
-        class="inline-block text-2xl lg:text-3xl font-bold"
+        class="inline-block text-2xl font-bold lg:text-3xl"
       >
         {{ shop.name }}
       </a>
@@ -15,7 +15,7 @@
       {% assign link_class = 'flex flex-col justify-center items-center text-sm text-gray-600 hover:text-black font-medium transition duration-150 p-2' %}
       {% assign icon_class = 'w-auto h-7 text-black mb-2' %}
 
-      <div class="hidden md:flex space-x-2 lg:space-x-6">
+      <div class="hidden space-x-2 md:flex lg:space-x-6">
         <a
           href="{{ routes.search_url }}"
           class="{{ link_class }}"
@@ -42,7 +42,7 @@
           {{ 'action.cart' | t }}
 
           {% if cart.item_count > 0 %}
-            <div class="w-5 h-5 flex justify-center items-center bg-black text-white text-xs border border-white rounded-full absolute top-0 right-0">
+            <div class="absolute top-0 right-0 flex items-center justify-center w-5 h-5 text-xs text-white bg-black border border-white rounded-full">
               {{ cart.item_count }}
             </div>
           {% endif %}
