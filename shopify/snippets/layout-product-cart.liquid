@@ -1,0 +1,64 @@
+<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+  <div class="grid-cols-8 gap-4 md:grid">
+    <div class="flex flex-wrap col-span-5 gap-2 mb-4 md:gap-6 md:mb-0">
+      <a href="{{ product.url | within: collections.all }}" class="block w-full h-64 md:w-32 md:h-32">
+        <img
+          sizes="
+            (min-width: 768px) 275px,
+            400px
+          "
+          srcset="
+            {{ product | img_url: '275x' }} 275w,
+            {{ product | img_url: '400x' }} 400w
+          "
+          src="{{ product | img_url: '400x' }}"
+          alt="{{ product.title | escape }}"
+          loading="lazy"
+          class="object-cover object-center w-full h-full rounded-2xl"
+        >
+      </a>
+
+      <div class="flex flex-col py-2">
+        {% if product.title %}
+          <a href="{{ product.url | within: collection }}" class="mb-2 text-lg font-bold">
+            {{ product.title }}
+          </a>
+        {% endif %}
+
+        {% if product.options_with_values %}
+          <div class="text-sm">
+            {% for option in product.options_with_values %}
+              <div>{{ option.name }}: {{ option.value }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if deleteUrl %}
+          <a href="{{ deleteUrl }}" class="mt-2 text-sm underline md:mt-auto">
+            {{ 'action.remove' | t }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between md:justify-end">
+      <span class="md:hidden">{{ 'common.price' | t }}</span> {{ product.price | money }}
+    </div>
+
+    <div class="flex items-center justify-between md:justify-end">
+      <span class="md:hidden">{{ 'common.quantity' | t }}</span> x{{ product.quantity }}
+    </div>
+
+    <div class="flex items-center justify-between md:justify-end">
+      {% if product.original_line_price != product.line_price %}
+        {{ product.original_line_price | money }}
+      {% endif %}
+
+      <span class="md:hidden">{{ 'common.total' | t }}</span> {{ product.line_price | money }}
+
+      {% for discount in product.discounts %}
+        {{ discount.title }}
+      {% endfor %}
+    </div>
+  </div>
+</div>

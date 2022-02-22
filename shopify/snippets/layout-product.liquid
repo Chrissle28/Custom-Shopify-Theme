@@ -1,0 +1,50 @@
+<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+  <a href="{{ product.url | within: collection }}" class="relative block">
+    <img
+      sizes="
+        (min-width: 768px) 450px,
+        630px
+      "
+      srcset="
+        {{ product.featured_image.src | img_url: '450x' }} 450w,
+        {{ product.featured_image.src | img_url: '630x' }} 630w
+      "
+      src="{{ product.featured_image.src | img_url: '630x' }}"
+      alt="{{ product.featured_image.alt | escape }}"
+      loading="lazy"
+      class="object-cover object-center w-full h-80 rounded-2xl sm:h-64 xl:h-80 2xl:max-h-96"
+    >
+
+    {% if product.compare_at_price %}
+      <div class="absolute top-0 left-0 px-2 py-1 text-sm tracking-wider text-white uppercase bg-red-500">
+        {{ 'common.sale' | t }}
+      </div>
+    {% endif %}
+  </a>
+
+  <div class="mt-4">
+    {% if product.title %}
+      <a href="{{ product.url | within: collection }}" class="text-lg font-bold">
+        {{ product.title }}
+      </a>
+    {% endif %}
+
+    {% if product.available %}
+      <div>
+        <span class="{% if product.compare_at_price %}text-red-500{% endif %}">
+          {{ product.price | money }}
+        </span>
+
+        {% if product.compare_at_price %}
+          <del class="ml-2">
+            {{ product.compare_at_price | money }}
+          </del>
+        {% endif %}
+      </div>
+    {% else %}
+      <div>
+        {{ 'common.sold_out' | t }}
+      </div>
+    {% endif %}
+  </div>
+</div>
